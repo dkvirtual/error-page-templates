@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error Pages - Deutsche Kraniche Virtual</title>
+    {{ with (templates.Defer (dict "key" "global")) }}
+    {{ partial "css.html" . }}
+    {{ end }}
+</head>
+<body class="antialiased bg-gray-50 dark:bg-slate-900 min-h-screen">
+<div class="p-8">
+    <h1 class="text-3xl font-bold text-black dark:text-gray-200 mb-4">Error Pages</h1>
+    <p class="text-grey-darker dark:text-gray-300 mb-6">Available error page templates:</p>
+    <ul class="space-y-2">
+        {{ range sort .Site.RegularPages ".Params.code" }}
+        <li>
+            <a href="{{ .RelPermalink }}" class="text-blue-500 hover:text-blue-600 underline">
+                {{ if .Params.code }} {{ .Params.code }} - {{ end }} {{ .Title }}
+            </a>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+</body>
+</html>

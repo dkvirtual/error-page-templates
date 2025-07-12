@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ .Title }} - Deutsche Kraniche Virtual</title>
+
+    <!-- Styles -->
+    {{ with (templates.Defer (dict "key" "global")) }}
+    {{ partial "css.html" . }}
+    {{ end }}
+
+    <!-- Branding -->
+    <link rel="dns-prefetch" href="https://brand.dkvirtual.com" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://brand.dkvirtual.com/meta/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://brand.dkvirtual.com/meta/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://brand.dkvirtual.com/meta/favicon-16x16.png">
+    <link rel="manifest" href="https://brand.dkvirtual.com/meta/site.webmanifest">
+    <link rel="mask-icon" href="https://brand.dkvirtual.com/meta/safari-pinned-tab.svg" color="#0a153d">
+    <meta name="msapplication-TileColor" content="#0a153d">
+    <meta name="theme-color" content="#0a153d">
+</head>
+<body class="antialiased h-full">
+<div class="fixed inset-0 overflow-y-auto overflow-x-hidden bg-gray-50 dark:bg-slate-900">
+    <div class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div class="w-full max-w-2xl">
+            <div class="flex justify-start h-10 mb-16">
+                <img src="https://brand.dkvirtual.com/logos/dynamic/color.svg" class="h-10 block dark:hidden" alt="logo"/>
+                <img src="https://brand.dkvirtual.com/logos/dynamic/white.svg" class="h-10 hidden dark:block" alt="logo"/>
+            </div>
+
+            <div class="min-h-[2.5rem] text-black dark:text-gray-200 text-3xl font-bold line-clamp-2">
+                {{ .Title }}
+            </div>
+
+            <div class="min-h-[2rem] mt-3 text-grey-darker dark:text-gray-300 text-2xl leading-normal line-clamp-2">
+                {{ .Params.subtitle }}
+            </div>
+
+            {{ if .Params.description }}
+            <div class="min-h-[3rem] mt-3 text-grey-darker dark:text-gray-300 line-clamp-3">
+                {{ .Params.description }}
+            </div>
+            {{ else }}
+            <div class="min-h-[3rem] mt-3"></div>
+            {{ end }}
+
+            {{ if .Params.cf_error_box }}
+            <div class="min-h-[2rem] mt-3 text-grey-darker dark:text-gray-400 line-clamp-2">
+                {{ .Params.cf_error_box }}
+            </div>
+            {{ else }}
+            <div class="min-h-[2rem] mt-3"></div>
+            {{ end }}
+
+            {{ if .Params.cf_error_box_hidden }}
+            <div class="hidden">
+                {{ .Params.cf_error_box_hidden }}
+            </div>
+            {{ end }}
+
+            <div class="min-h-[2rem] mt-10 pt-2 text-grey-darker dark:text-gray-400 text-xs border-t border-white/10 flex flex-wrap items-center gap-x-4 gap-y-2">
+                {{ if .Params.is_cloudflare }}
+                <span class="whitespace-nowrap">
+                            Request ID: ::RAY_ID::
+                        </span>
+                {{ end }}
+
+                {{ if .Params.is_cloudflare }}
+                <span class="whitespace-nowrap">
+                            Your IP: ::CLIENT_IP::
+                        </span>
+                {{ end }}
+
+                <span class="whitespace-nowrap">
+                        <a href="https://status.dkvirtual.com" target="_blank" class="text-blue-500 underline">Status Page</a>
+                    </span>
+                <span class="whitespace-nowrap">
+                        <a href="https://helpdesk.dkvirtual.com" target="_blank" class="text-blue-500 underline">Contact Support</a>
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
