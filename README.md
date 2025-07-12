@@ -2,7 +2,7 @@
 
 This repository contains the error page templates for Deutsche Kraniche Virtual. These templates provide a consistent, branded experience when users encounter errors.
 
-The templates are published to: https://error-templates.dkvirtual.com.
+The templates are published to: https://error-page-templates.dkvirtual.com.
 
 ## Quick Start
 
